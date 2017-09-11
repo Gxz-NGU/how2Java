@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+	<servlet>
+		<servlet-name>HerolistServlet</servlet-name>
+		<servlet-class>Controller.HerolistServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HerolistServlet</servlet-name>
+		<url-pattern>/herolist</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DeleteHeroServlet</servlet-name>
+		<servlet-class>Controller.DeleteHeroServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteHeroServlet</servlet-name>
+		<url-pattern>/deletehero</url-pattern>
+	</servlet-mapping>
+	
+</web-app>
