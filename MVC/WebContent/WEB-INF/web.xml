@@ -17,5 +17,12 @@
 		<servlet-name>DeleteHeroServlet</servlet-name>
 		<url-pattern>/deletehero</url-pattern>
 	</servlet-mapping>
-	
+	<filter>
+	<filter-name>FirstFilter</filter-name>
+	<filter-class>filter.FirstFilter</filter-class>
+</filter>
+<filter-mapping>
+	<filter-name>FirstFilter</filter-name>
+	<url-pattern>/*</url-pattern>
+</filter-mapping>
 </web-app>
