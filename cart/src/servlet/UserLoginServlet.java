@@ -13,13 +13,14 @@ import dao.UserDAO;
 public class UserLoginServlet extends HttpServlet{
 	public void service(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		UserDAO userDAO = new UserDAO();
-		String name =(String) request.getAttribute("name");
-		String password = (String) request.getAttribute("password");
+		String name =(String) request.getParameter("name");
+		String password = (String) request.getParameter("password");
 		User user = userDAO.getUser(name, password);
 		if(null == user) response.sendRedirect("login.jsp");
 		else
 			try {
-				request.getRequestDispatcher("listproduct.jsp").forward(request, response);
+				request.getSession().setAttribute("user",user );
+				request.getRequestDispatcher("listproduct").forward(request, response);
 			} catch (ServletException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

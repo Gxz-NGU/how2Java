@@ -22,6 +22,27 @@ public class ProductDAO {
 		return DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/cart?characterEncoding=UTF-8","root","admin");
 	}
 	
+	public Product getProduct(int id){
+		Product product = null;
+		String sql = "select * from product where id = ?";
+		try(Connection c = getConnection();
+			PreparedStatement p = c.prepareStatement(sql);			
+			){
+			p.setInt(1, id);
+			ResultSet rSet= p.executeQuery();
+			while(rSet.next()){
+				product = new Product();
+				product.setId(rSet.getInt("id"));
+				product.setName(rSet.getString("name"));
+				product.setPrice(rSet.getFloat("price"));
+			}
+		} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		return product;
+	}
+	
 	public ArrayList<Product> listProduct(){
 		ArrayList<Product> products = new ArrayList<Product>();
 		String sql = "select * from product order by id desc";

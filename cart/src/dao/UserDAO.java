@@ -25,8 +25,12 @@ public class UserDAO {
 		String sql = "select * from user where name=? and password=?";
 		try(Connection connection = getConnection();
 			PreparedStatement p = connection.prepareStatement(sql);
-			){ResultSet rSet = p.executeQuery();
+			){
+			p.setString(1, name);
+			p.setString(2, password);
+			ResultSet rSet = p.executeQuery();
 			while(rSet.next()){
+				user = new User();//这个声明对象的错误 如果不看代码的话感觉自己应该是不会发现了的
 				user.setId(rSet.getInt("id"));
 				user.setName(rSet.getString("name"));
 				user.setPassword(rSet.getString("password"));
