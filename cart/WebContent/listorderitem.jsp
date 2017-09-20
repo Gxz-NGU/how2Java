@@ -10,6 +10,7 @@
 			<td>单价</td>
 			<td>数量</td>
 			<td>小计</td>
+			<td>删除操作</td>
 		</tr>
 	</thead>
 	<tbody>
@@ -19,7 +20,18 @@
 			<td>${oi.product.getPrice()}</td>
 			<td>${oi.getNumber()}</td>
 			<td>${oi.product.getPrice()*oi.getNumber()}</td>
+			<!-- <td><a href="delete?pid=${oi.product.getId()}">删除</a></td> -->
+			<td>
+				<form action="delete" method="post">
+					<input type="hidden" value="${oi.product.getId()}" name="pid"/>
+					<input type="submit" value="delete"/>
+				</form>
+			</td>
 		</tr>
 		</c:forEach>
+		<c:if test="${!empty ois}">
+			<tr><td colspan="5" align="right"><a href="createOrder">创建订单</a></td>
+			</tr>
+		</c:if>
 	</tbody>
 </table>

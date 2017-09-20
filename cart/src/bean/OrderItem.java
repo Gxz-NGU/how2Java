@@ -4,6 +4,13 @@ public class OrderItem {
 	private int id;
 	private Product product;
 	private int number;
+	private Order order;
+	public Order getOrder() {
+		return order;
+	}
+	public void setOrder(Order order) {
+		this.order = order;
+	}
 	public int getId() {
 		return id;
 	}
