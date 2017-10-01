@@ -17,12 +17,10 @@ public class TestMybatis {
 		InputStream inputStream = Resources.getResourceAsStream(resource);
 		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 		SqlSession sqlSession = sqlSessionFactory.openSession();
+		System.out.println(123123);
+		Product p5 = sqlSession.selectOne("getProduct",5);
+		System.out.println(p5.getName());
 		
-		Category category = new Category();
-		category.setId(11);
-		category.setName("IjustFeelBlank");
-		sqlSession.update("updateCategory",category );
-		listAll(sqlSession);
 		sqlSession.commit();
 		sqlSession.close();
 	}
