@@ -19,6 +19,8 @@ public class DeleteHeroServlet extends HttpServlet{
 		response.sendRedirect("herolist");
 	}
 
-	public void test(){}
+	public void test(){
+		System.out.println("append some test.");
+	}
 	
 }
